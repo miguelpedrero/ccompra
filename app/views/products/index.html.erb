@@ -19,6 +19,7 @@
       <th>Foto</th>
       <th>Precio</th>
       <th>Categoria</th>
+      <th>Comprar</th>
     </tr>
   </thead>
 
@@ -30,6 +31,7 @@
         <td><%= product.photo %></td>
         <td><%= product.precio %></td>
         <td><%= product.category.try( :name) %></td>
+        <td class="btn btn-warning"><%= link_to "AÑADIR", add_to_cart_path(product_id: product.id) %> </td>
 
       </tr>
     <% end %>
