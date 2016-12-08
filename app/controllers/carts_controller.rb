@@ -18,7 +18,7 @@ class CartsController < ApplicationController
   def add
   	@product = Product.find(params[:product_id])
   	@cart = current_user.carts.last
-  	@cart.orders.build(product: @product).save
+  	@cart.orders.build(product: @product)
   	@cart.save
   	
 
