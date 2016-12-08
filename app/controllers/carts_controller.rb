@@ -18,8 +18,16 @@ class CartsController < ApplicationController
   def add
   	@product = Product.find(params[:product_id])
   	@cart = current_user.carts.last
-  	@cart.orders.build(product: @product)
+  	@cart.orders.build(product: @product).save
   	@cart.save
+  	
+
+  	if @cart.save
+  		flash[:notice] = "El producto ha sido agregado con exito"
+  	else
+  		flash[:notice] = "Algo Salio mal "
+  	end
+
   	redirect_to :back
   end
 
