@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
 
+  get 'payments/index'
+
   get 'carts/:product_id/add', to: "carts#add", as: "add_to_cart" 
 
   devise_for :users
   get 'products/index'
 
 
-  resources :products, only: [:index] do
-    resources :orders, only: [:create]
+  resources :products, only: [:index] do #RUTA ANIDADA
+    resources :orders, only: [:create, :destroy]
   end
-  resources :carts, only: [:show ,:index]
+  resources :carts, only: [:show ,:index] do #RUTA ANIDADA para las rutas
+    resources :payments
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

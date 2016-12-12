@@ -5,9 +5,10 @@
 
   <thead>
     <tr>
-      <th>NAME</th>
-      <th>TOTAL</th>
-      <th>STATU</th>
+      <th>ID</th>
+      <th>PRODUCTO</th>
+      <th>PRECIO</th>
+      
       <th>BORRAR</th>
 
 
@@ -21,11 +22,10 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
+        <td><%= order.cart.id %></td>
         <td><%= order.product.name %></td>
         <td><%= order.product.precio %></td>
-        <td><%= order.cart.statu %></td>
-        <td><button>BORRAR</button></td>
-
+        <td>BORRAR</td>
        
 
 
@@ -34,6 +34,19 @@
 
 </table>
 
-<h1>total <%=  @cart.total_amount%></h1>
+<h1>Total <%=  @cart.total_amount%></h1>
+
+
+
+<%= form_for [@cart, Payment.new] do |f| %>
+	    <%= f.submit "PAGAR", :class => "btn btn-primary btn-lg" %>
+	<% end %>
+
+
+
+
+<br>
+<br>
+<br>
 
 </div>

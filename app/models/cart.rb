@@ -3,6 +3,7 @@ class Cart < ActiveRecord::Base
 	  belongs_to :user
 	  has_many :orders
 	  has_many :products, through: :orders
+	  has_one :payment
 
 
 	  def set_total_amount
